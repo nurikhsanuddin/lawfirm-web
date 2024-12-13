@@ -42,66 +42,170 @@
     .card p {
       font-size: 1rem;
     }
+
+    .transform-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .transform-scale:hover {
+      transform: scale(1.02);
+    }
+
+    .transform-translate-50 {
+      transform: translate(50%, -50%);
+    }
+
+    .transform-translate-negative-25 {
+      transform: translate(-25%, -25%);
+    }
+
+    .opacity-10 {
+      opacity: 0.1;
+    }
+
+
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--primary-rgb), 0.02) 100%);
+    }
+
+    .floating-image {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .blob-shape {
+      position: absolute;
+      top: -20%;
+      right: -20%;
+      width: 80%;
+      height: 80%;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      z-index: -1;
+      animation: blob 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes blob {
+      0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      }
+
+      50% {
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+      }
+
+      100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      }
+    }
   </style>
 </head>
 
 <body>
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We offer sustainable and high-quality solutions to support your agricultural and
-            plantation business growth</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Empowering Agriculture with Quality and Sustainability.</h2>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <div class="text-center text-lg-start">
-              <a href="#about"
-                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Get Started</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
+  <section id="hero" class="hero position-relative overflow-hidden">
+    <div class="hero-gradient position-absolute w-100 h-100">
+      <div class="container py-5">
+        <div class="row min-vh-100 align-items-center">
+          <div class="col-lg-6 d-flex flex-column justify-content-center position-relative z-2">
+            <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">
+              Muhammad Taufiq & Partners Law Firm
+            </h1>
+            <h2 class="h3 text-dark mb-4" data-aos="fade-up" data-aos-delay="200">
+              Providing extraordinary legal solutions and tailored advice to help you navigate complex challenges with
+              confidence and achieve the best outcomes. </h2>
+            <div data-aos="fade-up" data-aos-delay="400">
+              <div class="text-lg-start">
+                <a href="#about" class="btn btn-lg rounded-pill d-inline-flex align-items-center gap-2" style="
+                    background: linear-gradient(135deg, #0dcaf0 0%, #0d6efd 100%);
+                    color: white;
+                    padding: 1rem 2.5rem;
+                    font-weight: 500;
+                    border: none;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(13, 202, 240, 0.2);
+                    border-radius: 1.5rem !important;
+                  "
+                  onmouseover="this.style.transform='translateY(-3px) scale(1.02)';this.style.boxShadow='0 8px 25px rgba(13, 202, 240, 0.3)'"
+                  onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(13, 202, 240, 0.2)'">
+                  <span>Get Started</span>
+                  <i class="bi bi-arrow-right" style="transition: transform 0.3s ease;"
+                    onmouseover="this.style.transform='translateX(5px)'"
+                    onmouseout="this.style.transform='translateX(0)'"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 hero-img position-relative z-2" data-aos="zoom-out" data-aos-delay="200">
+            <div class="image-wrapper position-relative">
+              <img src="<?= base_url(); ?>vendor/front-end/assets/img/hero-img.png" class="img-fluid floating-image"
+                alt="Hero Image" style="width: 100%; max-width: none;">
+              <div class="blob-shape"></div>
             </div>
           </div>
         </div>
-        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="<?= base_url(); ?>vendor/front-end/assets/img/hero-img.png" class="img-fluid" alt="">
-        </div>
       </div>
     </div>
-
-  </section><!-- End Hero -->
-
+  </section>
   <main id="main">
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-
+    <section id="about" class="about position-relative py-5">
       <div class="container" data-aos="fade-up">
-        <div class="row gx-0">
+        <div class="row align-items-center gy-4">
 
-          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="content card">
-              <h3>PT ANEKA PRODUK INDONESIA RAYA</h3>
-              <p>
-                <?= $setting->profile; ?>
-              </p>
-              <div class="text-center text-lg-start">
-                <!-- <a href="services" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span>Read More</span>
-                  <i class="bi bi-arrow-right"></i>
-                </a> -->
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+            <div class="content p-4 p-lg-5 bg-white rounded-4 shadow-lg position-relative overflow-hidden">
+              <!-- Modern decorative element -->
+              <div
+                class="position-absolute top-0 end-0 w-25 h-25 bg-primary opacity-10 rounded-circle transform-translate-50">
+              </div>
+
+              <span class="badge bg-primary mb-3 px-3 py-2 ">About Us</span>
+              <h2 class="display-6 fw-bold mb-4">TENTANG MT&P LAW FIRM </h2>
+              <div class="post-img mb-4 pe-4">
+                <p class="lead text-muted">
+                  <?= $setting->profile; ?>
+                </p>
+              </div>
+              <div class="mt-4">
+                <a href="#services" class="btn btn-primary btn-lg rounded-pill px-4">
+                  Explore Our Services
+                  <i class="bi bi-arrow-right ms-2"></i>
+                </a>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="<?= base_url(); ?>vendor/front-end/assets/img/about.jpg" class="img-fluid" alt="">
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="position-relative">
+              <!-- Main image with modern styling -->
+              <div class="rounded-4 overflow-hidden shadow-lg">
+                <img src="<?= base_url(); ?>vendor/front-end/assets/img/about.jpg"
+                  class="img-fluid w-100 transform-scale" alt="About PT Aneka Produk Indonesia Raya"
+                  style="aspect-ratio: 4/3; object-fit: cover;">
+              </div>
+              <!-- Decorative background element -->
+              <div
+                class="position-absolute top-0 start-0 w-75 h-75 bg-primary opacity-10 rounded-4 transform-translate-negative-25"
+                style="z-index: -1;"></div>
+            </div>
           </div>
 
         </div>
       </div>
-
     </section><!-- End About Section -->
 
     <!-- ======= Values Section ======= -->
@@ -424,7 +528,7 @@
     </section><!-- End Services Section -->
 
     <!-- ======= F.A.Q Section ======= -->
-    <!-- <section id="faq" class="faq">
+    <section id="faq" class="faq">
 
       <div class="container" data-aos="fade-up">
 
@@ -435,43 +539,52 @@
 
         <div class="row">
           <div class="col-lg-6">
-  
+
             <div class="accordion accordion-flush" id="faqlist1">
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq-content-1">
                     Non consectetur a erat nam at lectus urna duis?
                   </button>
                 </h2>
                 <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                   <div class="accordion-body">
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
+                    gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq-content-2">
                     Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
                   </button>
                 </h2>
                 <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                   <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
+                    donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque
+                    elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq-content-3">
                     Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
                   </button>
                 </h2>
                 <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                   <div class="accordion-body">
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar
+                    elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque
+                    eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis
+                    sed odio morbi quis
                   </div>
                 </div>
               </div>
@@ -481,44 +594,54 @@
 
           <div class="col-lg-6">
 
-      
+
             <div class="accordion accordion-flush" id="faqlist2">
 
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq2-content-1">
                     Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
                   </button>
                 </h2>
                 <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                   <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
+                    donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque
+                    elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq2-content-2">
                     Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
                   </button>
                 </h2>
                 <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                   <div class="accordion-body">
-                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in.
+                    Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est.
+                    Purus gravida quis blandit turpis cursus in
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq2-content-3">
                     Varius vel pharetra vel turpis nunc eget lorem dolor?
                   </button>
                 </h2>
                 <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                   <div class="accordion-body">
-                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada
+                    nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut
+                    venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas
+                    egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
                   </div>
                 </div>
               </div>
@@ -530,7 +653,7 @@
 
       </div>
 
-    </section> -->
+    </section>
 
     <!-- End F.A.Q Section -->
 
@@ -621,7 +744,7 @@
     </section> -->
 
     <!-- ======= Testimonials Section ======= -->
-    <!-- <section id="testimonials" class="testimonials">
+    <section id="testimonials" class="testimonials">
 
       <div class="container" data-aos="fade-up">
 
@@ -648,13 +771,15 @@
                 <div class="swiper-slide">
                   <div class="card testimonial-item ">
                     <div class="stars">
-                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                     </div>
                     <p>
                       <?= $isi; ?>
                     </p>
                     <div class="profile mt-auto">
-                      <img src="<?= base_url('assets/img/portfolio/') . $value->gambar_portfolio; ?>" class="testimonial-img" alt="">
+                      <img src="<?= base_url('assets/img/portfolio/') . $value->gambar_portfolio; ?>"
+                        class="testimonial-img" alt="">
                       <h3><?= $value->judul_portfolio; ?></h3>
                       <h4><?= $value->nama_layanan; ?></h4>
                     </div>
@@ -662,7 +787,7 @@
                 </div>
               <?php endif; ?>
             <?php endforeach; ?>
-    
+
 
           </div>
           <div class="swiper-pagination"></div>
@@ -670,12 +795,12 @@
 
       </div>
 
-    </section> -->
+    </section>
 
     <!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
-    <!-- <section id="team" class="team">
+    <section id="team" class="team">
 
       <div class="container" data-aos="fade-up">
 
@@ -711,15 +836,15 @@
 
       </div>
 
-    </section> -->
+    </section>
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
+    <!-- <section id="clients" class="clients">
 
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <!-- <h2>Our Clients</h2> -->
+  
           <p>Our Clients</p>
         </header>
 
@@ -737,7 +862,7 @@
         </div>
       </div>
 
-    </section>
+    </section> -->
 
     <!-- ======= Recent Blog Posts Section ======= -->
     <!-- <section id="recent-blog-posts" class="recent-blog-posts">

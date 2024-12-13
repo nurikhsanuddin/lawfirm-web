@@ -3,18 +3,16 @@
 
 <head>
   <title><?= $title; ?></title>
-  <meta content="" name="description">
+  <meta content="Professional Legal Services" name="description">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta content="" name="keywords">
+  <meta content="law firm, legal services, attorney, lawyer" name="keywords">
 
   <!-- Favicons -->
   <link href="<?= base_url('assets/img/company/') . $image; ?>" rel="icon">
   <link href="<?= base_url() ?>vendor/front-end/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="<?= base_url() ?>vendor/front-end/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
