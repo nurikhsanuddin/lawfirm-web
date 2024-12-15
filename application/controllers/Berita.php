@@ -14,7 +14,7 @@ class Berita extends CI_Controller
     //load model
     $this->load->model('M_kategori');
     $this->load->model('M_berita');
-    $this->load->model('M_setting');
+    $this->load->model('M_setting'); 
     //load helper
     $this->load->helper('berita');
   }
@@ -24,7 +24,7 @@ class Berita extends CI_Controller
     // load function dari model
     $setting = $this->M_setting->daftar();
     $title = $setting->nama_perusahaan;
-    $image = $setting->image;
+       $image = $setting->image;
     $berita  = $this->M_berita->daftar();
 
     // mengambil session
@@ -52,11 +52,11 @@ class Berita extends CI_Controller
       // LOAD FUNCTION DARI MODEL
       $setting = $this->M_setting->daftar();
       $title = $setting->nama_perusahaan;
-      $image = $setting->image;
+            $image = $setting->image;
       $kategori  = $this->M_kategori->daftarKategoriBerita();
 
       // MENGAMBIL DATA DARI SESSION
-      $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+         $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
       $data = array(
         'title'     => $title,
@@ -66,7 +66,6 @@ class Berita extends CI_Controller
         'kategori'  => $kategori,
         'image'     =>  $image,
       );
-
       $this->load->view('back_end/layout/v_wrapper', $data, false);
     } else {
       $this->M_berita->tambah();
@@ -147,20 +146,20 @@ class Berita extends CI_Controller
         // JIKA GAMBAR TIDAK DIGANTI
         $slug   = url_title($this->input->post('judul'), 'dash', TRUE);
 
-        $data = array(
-          'id_berita'     => $id_berita,
-          'id_kategori'   => $this->input->post('kategori'),
-          'slug_berita'   => $slug,
-          'judul_berita'  => $this->input->post('judul'),
-          'isi_berita'    => $this->input->post('isi'),
-          'jenis_berita'  => $this->input->post('jenis_berita'),
-          'status_berita' => $this->input->post('status'),
-          'keywords'      => $this->input->post('keywords'),
-          'last_modified' => date('Y-m-d'),
-        );
-        $this->M_berita->edit($data);
-        $this->session->set_flashdata('success', 'Berhasil mengedit data');
-        redirect('berita');
+                  $data = array(
+                    'id_berita'     => $id_berita,
+                    'id_kategori'   => $this->input->post('kategori'),
+                    'slug_berita'   => $slug,
+                    'judul_berita'  => $this->input->post('judul'),
+                    'isi_berita'    => $this->input->post('isi'),
+                    'jenis_berita'  => $this->input->post('jenis_berita'),
+                    'status_berita' => $this->input->post('status'),
+                    'keywords'      => $this->input->post('keywords'),
+                    'last_modified' => date('Y-m-d'),
+                  );
+                  $this->M_berita->edit($data);
+                  $this->session->set_flashdata('success', 'Berhasil mengedit data');
+                  redirect('berita');
       }
     }
     // End masuk database
@@ -171,7 +170,7 @@ class Berita extends CI_Controller
       'kategori'  => $kategori,
       'berita'    => $berita,
       'isi'       => 'back_end/berita/v_edit',
-      'user'      => $user,
+      'user'      => $user, 
       'image'     =>  $image,
     );
     $this->load->view('back_end/layout/v_wrapper', $data, FALSE);

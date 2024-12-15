@@ -1,7 +1,7 @@
 <main id="main">
 
   <!-- ======= Breadcrumbs ======= -->
-  <section class="breadcrumbs">
+  <section class="breadcrumbs" style="margin-top: 120px;">
     <div class="container">
 
       <ol>
@@ -19,7 +19,7 @@
       <div class="row">
 
         <div class="col-lg-8 entries">
-          <?php foreach ($berita as $key => $value) :
+          <?php foreach ($berita as $key => $value):
             // strip tags to avoid breaking any html
             $isi = strip_tags($value->isi_berita);
             if (strlen($isi) > 200) {
@@ -31,10 +31,11 @@
               //if the isi doesn't contain any space then it will cut without word basis.
               $isi = $endPoint ? substr($isiCut, 0, $endPoint) : substr($isiCut, 0);
             }
-            if ($value->status_berita == "Publish") : ?>
+            if ($value->status_berita == "Publish"): ?>
               <div class="card mb-4 entry">
                 <div class="entry-img">
-                  <img src="<?= base_url('assets/img/berita/') . $value->gambar_berita; ?>" alt="" class="img-responsive center-block d-block mx-auto">
+                  <img src="<?= base_url('assets/img/berita/') . $value->gambar_berita; ?>" alt=""
+                    class="img-responsive center-block d-block mx-auto">
                 </div>
 
                 <h2 class="entry-title">
@@ -43,8 +44,10 @@
                 <div class="entry-meta">
                   <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><?= $value->nama; ?></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><?= date('d-M-Y H:i', strtotime($value->date_cretated)); ?></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
+                      <a><?= date('d-M-Y H:i', strtotime($value->date_cretated)); ?></a>
+                    </li>
+                    <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li> -->
                   </ul>
                 </div>
                 <div class="entry-content">
@@ -85,21 +88,22 @@
             <h3 class="sidebar-title">Kategori</h3>
             <div class="sidebar-item categories">
               <ul>
-                <?php foreach ($kategori as $key => $values) : ?>
+                <?php foreach ($kategori as $key => $values): ?>
                   <li><a href="#"><?= $values->nama_kategori; ?> <span>(25)</span></a></li>
                 <?php endforeach; ?>
               </ul>
             </div><!-- End sidebar categories-->
             <!-- PRINT DATA BERITA -->
             <h3 class="sidebar-title">Recent Posts</h3>
-            <?php foreach ($lastst_berita as $key => $value) :
+            <?php foreach ($lastst_berita as $key => $value):
               // CEK KONDISI BERITA
-
-              if ($value->status_berita == "Publish") : ?>
+            
+              if ($value->status_berita == "Publish"): ?>
                 <div class="sidebar-item recent-posts">
                   <div class="post-item clearfix">
                     <img src="<?= base_url('assets/img/berita/') . $value->gambar_berita; ?>" alt="">
-                    <h4><a href="<?= base_url('home/detail/' . $value->slug_berita); ?>"><?= $value->judul_berita; ?></a></h4>
+                    <h4><a href="<?= base_url('home/detail/' . $value->slug_berita); ?>"><?= $value->judul_berita; ?></a>
+                    </h4>
                     <time datetime="01-01-2020"><?= date('d-m-Y H:i', strtotime($value->date_cretated)); ?></time>
                   </div>
                 </div><!-- End sidebar recent posts-->

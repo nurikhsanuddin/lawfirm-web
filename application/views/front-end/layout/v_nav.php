@@ -29,7 +29,7 @@
     <li><a class="nav-link scrollto" href="<?= base_url('home/#contact'); ?>">Contact</a></li>
     <li><a class="getstarted scrollto" href="<?= base_url('home/#about'); ?>">Get Started</a></li>
   </ul>
-  <i class="bi bi-list mobile-nav-toggle"></i>
+  <i class="bi bi-list mobile-nav-toggle "></i>
 </nav><!-- .navbar -->
 
 </div>

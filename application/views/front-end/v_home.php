@@ -31,7 +31,7 @@
     }
 
     .service-box h3,
-    .service-box p {
+        .service-box p {
       font-size: 1rem;
     }
 
@@ -118,12 +118,12 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero position-relative overflow-hidden">
     <div class="hero-gradient position-absolute w-100 h-100">
-      <div class="container py-5">
+                <div class="container py-5">
         <div class="row min-vh-100 align-items-center">
-          <div class="col-lg-6 d-flex flex-column justify-content-center position-relative z-2">
+              <div class="col-lg-6 d-flex flex-column justify-content-center position-relative z-2">
             <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">
               Muhammad Taufiq & Partners Law Firm
-            </h1>
+                    </h1>
             <h2 class="h3 text-dark mb-4" data-aos="fade-up" data-aos-delay="200">
               Providing extraordinary legal solutions and tailored advice to help you navigate complex challenges with
               confidence and achieve the best outcomes. </h2>
@@ -131,7 +131,7 @@
               <div class="text-lg-start">
                 <a href="#about" class="btn btn-lg rounded-pill d-inline-flex align-items-center gap-2" style="
                     background: linear-gradient(135deg, #0dcaf0 0%, #0d6efd 100%);
-                    color: white;
+                         color: white;
                     padding: 1rem 2.5rem;
                     font-weight: 500;
                     border: none;
@@ -147,7 +147,7 @@
                     onmouseout="this.style.transform='translateX(0)'"></i>
                 </a>
               </div>
-            </div>
+                   </div>
           </div>
           <div class="col-lg-6 hero-img position-relative z-2" data-aos="zoom-out" data-aos-delay="200">
             <div class="image-wrapper position-relative">
@@ -209,7 +209,7 @@
     </section><!-- End About Section -->
 
     <!-- ======= Values Section ======= -->
-    <section id="values" class="values">
+    <!-- <section id="values" class="values">
 
       <div class="container" data-aos="fade-up">
 
@@ -252,7 +252,7 @@
 
         </div>
 
-    </section><!-- End Values Section -->
+    </section> -->
 
     <!-- ======= Counts Section ======= -->
     <!-- <section id="counts" class="counts">
@@ -310,7 +310,7 @@
 
       <div class="container" data-aos="fade-up">
 
-        <div class="container" data-aos="fade-up">
+        <!-- <div class="container" data-aos="fade-up">
 
           <header class="section-header">
             <h2>Our Features</h2>
@@ -375,12 +375,12 @@
 
           </div>
 
-        </div>
+        </div> -->
 
         <!-- Feature Tabs -->
         <div class="row feture-tabs" data-aos="fade-up">
           <div class="col-lg-6">
-            <h3>Visi, Misi, & Sejarah Perusahaan</h3>
+            <h3>Visi, Misi, & Sejarah MT&P Law Firm</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -418,7 +418,7 @@
             <img src="<?= base_url(); ?>vendor/front-end/assets/img/features-2.png" class="img-fluid" alt="">
           </div>
 
-        </div><!-- End Feature Tabs -->
+        </div>
 
         <!-- Feature Icons -->
         <!-- <div class="row feature-icons" data-aos="fade-up">
@@ -496,164 +496,114 @@
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
-
-      <div class="container" data-aos="fade-up">
-
+    <div class="container" data-aos="fade-up">
         <header class="section-header">
-          <h2>Services</h2>
-          <p>Layanan Yang Kami Tawarkan</p>
+          <p>KENAPA HARUS MT&P LAW FIRM</p>
+          <span class="text-muted mt-2">Karena MT&P Law Firm mampu memberikan berbagai Macam Pelayanan Serta Menyediakan Jasa Hukum Profesional Berkualitas Tinggi serta di dukung dengan TIM Hukum yang berintegritas tinggi dan Kantor yang mewah yang terletak di Pusat Kota Solo</h2>
         </header>
 
         <div class="row gy-4">
-          <?php foreach ($layanan as $key => $value):
-
-            if ($value->status_layanan == "Publish"): ?>
-              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-box blue">
-                  <div class="post-img"> <img src="<?= base_url('assets/img/layanan/') . $value->gambar_layanan; ?>" alt=""
-                      class="img-fluid rounded " style="height: 100px; width:100px;">
-                  </div>
-                  <h3><?= $value->judul_layanan; ?></h3>
-                  <a href="<?= base_url('home/detaillayanan/' . $value->slug_layanan); ?>" class="read-more"><span>Read
-                      More</span> <i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            <?php endif; ?>
-          <?php endforeach; ?>
-
+            <?php foreach ($layanan as $value): ?>
+                <?php if ($value->status_layanan == "Publish"): ?>
+                    <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-box blue">
+                            <div class="post-img mb-4">
+                                <img 
+                                    src="<?= base_url('assets/img/layanan/' . $value->gambar_layanan); ?>" 
+                                    alt="<?= $value->judul_layanan; ?>" 
+                                    class="service-image"
+                                >
+                            </div>
+                            <h3><?= $value->judul_layanan; ?></h3>
+                            <a href="<?= base_url('home/detaillayanan/' . $value->slug_layanan); ?>" class="read-more">
+                                <span>Read More</span> 
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </div>
-
-      </div>
-
-    </section><!-- End Services Section -->
+    </div>
+</section><!-- End Services Section -->
 
     <!-- ======= F.A.Q Section ======= -->
-    <section id="faq" class="faq">
+    <section id="services" class="services section-bg py-5">
+  <div class="container" data-aos="fade-up">
+    <header class="section-header text-center mb-5">
+      <h2 class="text-primary fw-bold mb-3">LAYANAN</h2>
+      <p class="lead "> Layanan HUKUM</p>
+      <span class="text-muted mt-2">Cakupan keahlian hukum dan pengalaman yang dimiliki para advokat MT&P Law Firm meliputi bidang-bidang sebagai berikut</p>
+    </header>
 
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h2>F.A.Q</h2>
-          <p>Frequently Asked Questions</p>
-        </header>
-
-        <div class="row">
-          <div class="col-lg-6">
-
-            <div class="accordion accordion-flush" id="faqlist1">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq-content-1">
-                    Non consectetur a erat nam at lectus urna duis?
-                  </button>
-                </h2>
-                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                  <div class="accordion-body">
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
-                    gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq-content-2">
-                    Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
-                  </button>
-                </h2>
-                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                  <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                    donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque
-                    elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq-content-3">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
-                  </button>
-                </h2>
-                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                  <div class="accordion-body">
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar
-                    elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque
-                    eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis
-                    sed odio morbi quis
-                  </div>
-                </div>
-              </div>
-
+    <div class="row g-4">
+      <!-- Litigasi Pidana Umum -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3">
+              <i class="bi bi-shield-check text-primary fs-4"></i>
             </div>
+            <h3 class="h5 mb-0 fw-bold">LITIGASI PIDANA UMUM</h3>
           </div>
-
-          <div class="col-lg-6">
-
-
-            <div class="accordion accordion-flush" id="faqlist2">
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq2-content-1">
-                    Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                  </button>
-                </h2>
-                <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                  <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                    donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque
-                    elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq2-content-2">
-                    Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-                  </button>
-                </h2>
-                <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                  <div class="accordion-body">
-                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in.
-                    Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est.
-                    Purus gravida quis blandit turpis cursus in
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq2-content-3">
-                    Varius vel pharetra vel turpis nunc eget lorem dolor?
-                  </button>
-                </h2>
-                <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                  <div class="accordion-body">
-                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada
-                    nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut
-                    venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas
-                    egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+          <p class="text-muted mb-0">Kami memberikan layanan jasa hukum berupa pendampingan pada tahap pemeriksaan dan penyidikan, dan membela klien di pengadilan.</p>
         </div>
-
       </div>
 
-    </section>
+      <!-- Litigasi Tindak Pidana Khusus -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3">
+              <i class="bi bi-briefcase text-primary fs-4"></i>
+            </div>
+            <h3 class="h5 mb-0 fw-bold">LITIGASI TINDAK PIDANA KHUSUS</h3>
+          </div>
+          <p class="text-muted mb-0">Penanganan kasus-kasus pidana khusus termasuk korupsi dengan tim ahli yang berpengalaman.</p>
+        </div>
+      </div>
+
+      <!-- Litigasi Perdata -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3">
+              <i class="bi bi-file-text text-primary fs-4"></i>
+            </div>
+            <h3 class="h5 mb-0 fw-bold">LITIGASI PERDATA</h3>
+          </div>
+          <p class="text-muted mb-0">Menangani berbagai kasus perdata dengan pendekatan yang komprehensif dan solusi yang efektif.</p>
+        </div>
+      </div>
+
+      <!-- Litigasi Komersial -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3">
+              <i class="bi bi-building text-primary fs-4"></i>
+            </div>
+            <h3 class="h5 mb-0 fw-bold">LITIGASI KOMERSIAL</h3>
+          </div>
+          <p class="text-muted mb-0">Spesialisasi dalam penyelesaian sengketa bisnis dan komersial untuk melindungi kepentingan klien.</p>
+        </div>
+      </div>
+
+      <!-- ADR -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3">
+              <i class="bi bi-people text-primary fs-4"></i>
+            </div>
+            <h3 class="h5 mb-0 fw-bold">ALTERNATIF PENYELESAIAN SENGKETA (ADR)</h3>
+          </div>
+          <p class="text-muted mb-0">Menawarkan solusi penyelesaian sengketa alternatif melalui mediasi dan arbitrase.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- End F.A.Q Section -->
 
@@ -781,7 +731,7 @@
                       <img src="<?= base_url('assets/img/portfolio/') . $value->gambar_portfolio; ?>"
                         class="testimonial-img" alt="">
                       <h3><?= $value->judul_portfolio; ?></h3>
-                      <h4><?= $value->nama_layanan; ?></h4>
+                      <!-- <h4><?= $value->nama_layanan; ?></h4> -->
                     </div>
                   </div>
                 </div>
@@ -806,7 +756,8 @@
 
         <header class="section-header">
           <h2>Team</h2>
-          <p>Our hard working team</p>
+          <p>OUR LAWYERS</p>
+          <span>MT&P Law Firm yang didirikan oleh Dr. Muhammad Taufiq, S.H., M.H., dan bersinergi bersama para advokat profesional yang berkompeten dibidangnya, mampu memberikan solusi atas masalah dalam bidang hukum, serta memberikan pelayanan bantuan dan jasa hukum kepada masyarakat pencari keadilan.</span>
         </header>
         <div class="row gy-4 d-flex justify-content-center">
           <?php foreach ($staff as $key => $value):
@@ -816,17 +767,17 @@
                 <div class="member">
                   <div class="member-img">
                     <img src="<?= base_url('assets/img/staff/') . $value->gambar_staff; ?>" class="img-fluid" alt="">
-                    <div class="social">
+                    <!-- <div class="social">
                       <a href=""><i class="bi bi-twitter"></i></a>
                       <a href=""><i class="bi bi-facebook"></i></a>
                       <a href=""><i class="bi bi-instagram"></i></a>
                       <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="member-info">
                     <h4><?= $value->nama_staff; ?></h4>
                     <span><?= $value->nama_kategori; ?></span>
-                    <p><?= $value->no_telepon; ?></p>
+                    <!-- <p><?= $value->no_telepon; ?></p>OUR LAWYERS -->
                   </div>
                 </div>
               </div>
@@ -910,12 +861,12 @@
 
       <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
-          <h2>Contact</h2>
-          <p>Contact Us</p>
-        </header>
+            <header class="section-header">
+              <h2>Contact</h2>
+              <p>Contact Us</p>
+            </header>
 
-        <div class="row gy-4">
+            <div class="row gy-4">
 
           <div class="col-lg-12">
 
@@ -946,45 +897,19 @@
                 <div class="info-box">
                   <i class="bi bi-clock"></i>
                   <h3>Open Hours</h3>
-                  <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+                  <p>Senin - Sabtu<br>08:00 - 17:00</p>
                 </div>
               </div>
             </div>
 
           </div>
-
-          <!-- <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-
-          </div> -->
+          <header class="section-header">
+    
+          <p>Hubungi Kami</p>
+        </header>
+         <?php 
+         $this->load->view('front-end/v_contact');
+         ?>
 
         </div>
 
@@ -993,23 +918,8 @@
     </section><!-- End Contact Section -->
 
     <!-- Tombol WhatsApp -->
-    <a href="https://api.whatsapp.com/send?phone=6287872466090" class="whatsapp-button" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 128 128">
-        <path fill="#fff"
-          d="M64,123c32.5,0,59-26.5,59-59c0-15.8-6.1-30.6-17.3-41.7C94.6,11.1,79.8,5,64,5C31.5,5,5,31.4,5,64 c0,10.4,2.7,20.5,7.9,29.5l-5.6,20.6c-1.2,4.4,2.8,8.5,7.3,7.3l21.3-5.6C44.4,120.5,54.1,123,64,123L64,123z">
-        </path>
-        <path fill="#5bf979"
-          d="M64,111c-7.8,0-15.6-2-22.5-5.7c-1.8-1-3.8-1.5-5.7-1.5c-1,0-2,0.1-3,0.4l-11.2,2.9l2.9-10.5 c0.8-3.1,0.4-6.4-1.2-9.2C19.1,80.3,17,72.2,17,64C17,38,38.1,17,64,17c12.6,0,24.4,4.9,33.3,13.8C106.1,39.6,111,51.4,111,64 C111,89.9,89.9,111,64,111L64,111z">
-        </path>
-        <path fill="#444b54"
-          d="M107.9,20.2C96.2,8.5,80.6,2,64,2C29.8,2,2,29.8,2,64c0,10.5,2.6,20.8,7.7,29.9l-5.3,19.4 c-0.9,3.1,0,6.3,2.3,8.6c2.3,2.3,5.5,3.2,8.6,2.4l20.2-5.3c8.8,4.6,18.6,7,28.6,7c34.2,0,62-27.8,62-62 C126,47.5,119.6,31.9,107.9,20.2z M64,120c-9.3,0-18.6-2.4-26.8-6.8c-0.4-0.2-0.9-0.4-1.4-0.4c-0.3,0-0.5,0-0.8,0.1l-21.3,5.6 c-1.5,0.4-2.5-0.4-2.9-0.8c-0.4-0.4-1.2-1.4-0.8-2.9l5.6-20.6c0.2-0.8,0.1-1.6-0.3-2.3C10.5,83.5,8,73.8,8,64C8,33.1,33.1,8,64,8 c15,0,29.1,5.8,39.6,16.4C114.2,35,120.1,49.1,120,64C120,94.9,94.9,120,64,120z">
-        </path>
-        <g>
-          <path fill="#006475"
-            d="M92.9,85.1c-1.2,3.4-7.2,6.8-10,7c-2.7,0.2-5.2,1.2-17.7-3.7c-15-5.9-24.5-21.3-25.2-22.3c-0.7-1-6-8-6-15.3 c0-7.3,3.8-10.8,5.2-12.3c1.4-1.5,2.9-1.8,3.9-1.8c1,0,2,0,2.8,0c1.1,0,2.2,0.1,3.3,2.5c1.3,2.9,4.2,10.2,4.5,10.9 c0.4,0.7,0.6,1.6,0.1,2.6c-0.5,1-0.7,1.6-1.5,2.5c-0.7,0.9-1.6,1.9-2.2,2.6c-0.7,0.7-1.5,1.5-0.6,3c0.9,1.5,3.8,6.3,8.2,10.2 c5.6,5,10.4,6.6,11.9,7.3c1.5,0.7,2.3,0.6,3.2-0.4c0.9-1,3.7-4.3,4.7-5.8c1-1.5,2-1.2,3.3-0.7c1.4,0.5,8.6,4.1,10.1,4.8 c1.5,0.7,2.5,1.1,2.8,1.7C94.1,78.7,94.1,81.6,92.9,85.1z">
-          </path>
-        </g>
-      </svg>
+    <a href="https://api.whatsapp.com/send?phone=628122961011" class="whatsapp-button" target="_blank">
+     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 258"><defs><linearGradient id="logosWhatsappIcon0" x1="50%" x2="50%" y1="100%" y2="0%"><stop offset="0%" stop-color="#1faf38"/><stop offset="100%" stop-color="#59dfaf"/></linearGradient><linearGradient id="logosWhatsappIcon1" x1="50%" x2="50%" y1="100%" y2="0%"><stop offset="0%" stop-color="#f9f9f9"/><stop offset="100%" stop-color="#fff"/></linearGradient></defs><path fill="url(#logosWhatsappIcon0)" d="M5.463 127.456c-.006 21.677 5.658 42.843 16.428 61.499L4.433 252.697l65.232-17.104a123 123 0 0 0 58.8 14.97h.054c67.815 0 123.018-55.183 123.047-123.01c.013-32.867-12.775-63.773-36.009-87.025c-23.23-23.25-54.125-36.061-87.043-36.076c-67.823 0-123.022 55.18-123.05 123.004"/><path fill="url(#logosWhatsappIcon1)" d="M1.07 127.416c-.007 22.457 5.86 44.38 17.014 63.704L0 257.147l67.571-17.717c18.618 10.151 39.58 15.503 60.91 15.511h.055c70.248 0 127.434-57.168 127.464-127.423c.012-34.048-13.236-66.065-37.3-90.15C194.633 13.286 162.633.014 128.536 0C58.276 0 1.099 57.16 1.071 127.416m40.24 60.376l-2.523-4.005c-10.606-16.864-16.204-36.352-16.196-56.363C22.614 69.029 70.138 21.52 128.576 21.52c28.3.012 54.896 11.044 74.9 31.06c20.003 20.018 31.01 46.628 31.003 74.93c-.026 58.395-47.551 105.91-105.943 105.91h-.042c-19.013-.01-37.66-5.116-53.922-14.765l-3.87-2.295l-40.098 10.513z"/><path fill="#fff" d="M96.678 74.148c-2.386-5.303-4.897-5.41-7.166-5.503c-1.858-.08-3.982-.074-6.104-.074c-2.124 0-5.575.799-8.492 3.984c-2.92 3.188-11.148 10.892-11.148 26.561s11.413 30.813 13.004 32.94c1.593 2.123 22.033 35.307 54.405 48.073c26.904 10.609 32.379 8.499 38.218 7.967c5.84-.53 18.844-7.702 21.497-15.139c2.655-7.436 2.655-13.81 1.859-15.142c-.796-1.327-2.92-2.124-6.105-3.716s-18.844-9.298-21.763-10.361c-2.92-1.062-5.043-1.592-7.167 1.597c-2.124 3.184-8.223 10.356-10.082 12.48c-1.857 2.129-3.716 2.394-6.9.801c-3.187-1.598-13.444-4.957-25.613-15.806c-9.468-8.442-15.86-18.867-17.718-22.056c-1.858-3.184-.199-4.91 1.398-6.497c1.431-1.427 3.186-3.719 4.78-5.578c1.588-1.86 2.118-3.187 3.18-5.311c1.063-2.126.531-3.986-.264-5.579c-.798-1.593-6.987-17.343-9.819-23.64"/></svg>
     </a>
 
     <!-- CSS untuk tombol WhatsApp -->

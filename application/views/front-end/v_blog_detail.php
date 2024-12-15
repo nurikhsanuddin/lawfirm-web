@@ -1,7 +1,7 @@
 <main id="main">
 
   <!-- ======= Breadcrumbs ======= -->
-  <section class="breadcrumbs">
+  <section class="breadcrumbs" style="margin-top: 120px;">
     <div class="container">
 
       <ol>
@@ -34,9 +34,9 @@
 
             <div class="entry-meta">
               <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><?= $berita->nama; ?></a></li>
+                <!-- <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><?= $berita->nama; ?></a></li> -->
                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><?= date('d-M-Y H:i', strtotime($berita->date_cretated)); ?></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li>
+                <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li> -->
               </ul>
             </div>
 
@@ -58,21 +58,7 @@
 
           </div>
 
-          <div class="blog-author d-flex align-items-center">
-            <img src="<?= base_url('assets/img/profile/' . $berita->image); ?>" class="rounded-circle float-left" alt="">
-            <div>
-              <h4><?= $berita->nama; ?></h4>
-              <div class="social-links">
-                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-              </div>
-              <p>
-                Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-              </p>
-            </div>
-          </div><!-- End blog author bio -->
-
+         
 
 
         </div>
@@ -113,7 +99,7 @@
             <?php endforeach; ?>
             <!-- End sidebar recent posts-->
 
-            <h3 class="sidebar-title">Tags</h3>
+            <!-- <h3 class="sidebar-title">Tags</h3>
             <div class="sidebar-item tags">
               <ul>
                 <li><a href="#">App</a></li>
@@ -128,7 +114,7 @@
                 <li><a href="#">Tips</a></li>
                 <li><a href="#">Marketing</a></li>
               </ul>
-            </div><!-- End sidebar tags-->
+            </div>End sidebar tags -->
 
           </div><!-- End sidebar -->
 

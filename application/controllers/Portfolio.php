@@ -116,7 +116,7 @@ class portfolio extends CI_Controller
 
           $data = array(
             'id_portfolio'      => $id_portfolio,
-            'nama_layanan'      => $this->input->post('layanan'),
+            'nama_layanan'      => 'layanan_kosong',
             'id_client'         => $this->input->post('client'),
             'judul_portfolio'   => $judul,
             'slug_portfolio'    => $slug,
@@ -139,7 +139,7 @@ class portfolio extends CI_Controller
 
         $data = array(
           'id_portfolio'      => $id_portfolio,
-          'nama_layanan'        => $this->input->post('layanan'),
+          'nama_layanan'      => 'layanan_kosong',
           'id_client'         => $this->input->post('client'),
           'judul_portfolio'   => $judul,
           'slug_portfolio'    => $slug,

@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 col-sm-6 col-12">
+      <div class="col-md-12 col-sm-12 col-12">
         <div class="row">
           <div class="col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
@@ -102,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-sm-6">
+      <!-- <div class="col-md-6 col-sm-6">
         <div class="card">
           <div class="card-header">
             <h4>Statistik kunjungan terakhir</h4>
@@ -111,18 +111,20 @@
             <div id="line"></div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
 
 
     <div class="section-body">
-      <div class="hero text-white hero-bg-image hero-bg-parallax mb-4" data-background="<?= base_url(); ?>vendor/back-end/assets/img/unsplash/andre-benz-1214056-unsplash.jpg">
+      <div class="hero text-white hero-bg-image hero-bg-parallax mb-4"
+        data-background="<?= base_url(); ?>vendor/back-end/assets/img/unsplash/andre-benz-1214056-unsplash.jpg">
         <div class="hero-inner">
           <h3>Selamat Datang <?= $user['nama']; ?></h3>
           <p class="lead">You almost arrived, complete the information about your account to complete registration.</p>
           <div class="mt-4">
-            <a href="<?= base_url('user/profile'); ?>" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="far fa-user"></i> Setup Account</a>
+            <a href="<?= base_url('user/profile'); ?>" class="btn btn-outline-white btn-lg btn-icon icon-left"><i
+                class="far fa-user"></i> Setup Account</a>
           </div>
         </div>
       </div>

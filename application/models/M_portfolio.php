@@ -58,7 +58,7 @@ class M_portfolio extends CI_Model
     }
     $data = [
       'id_user'           => $user,
-      'nama_layanan'      => $layanan,
+      'nama_layanan'      => 'layanan_kosong',
       'id_client'         => $client,
       'judul_portfolio'   => htmlspecialchars($judul),
       'slug_portfolio'    => htmlspecialchars($slug),

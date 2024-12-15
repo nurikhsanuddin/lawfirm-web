@@ -50,14 +50,14 @@
                     <label>Tanggal Project</label>
                     <input type="date" class="form-control" name="date">
                   </div>
-                  <div class="form-group col-lg-3 col-sm-12 col-md-12">
+                  <!-- <div class="form-group col-lg-3 col-sm-12 col-md-12">
                     <label class="">Layanan</label>
                     <select name="layanan" class="form-control selectric">
                       <?php foreach ($layanan as $key => $value) : ?>
                         <option value="<?= $value->judul_layanan; ?>"><?= $value->judul_layanan; ?></option>
                       <?php endforeach; ?>
                     </select>
-                  </div>
+                  </div> -->
                   <div class="form-group col-lg-3 col-sm-12 col-md-12">
                     <label class="">Website</label>
                     <input type="text" class="form-control" name="website" autofocus value="<?= set_value('website'); ?>" placeholder="www.example.com">

@@ -56,7 +56,7 @@
                     <label>Tanggal Project</label>
                     <input type="date" class="form-control" name="date" value="<?= $portfolio->date_project; ?>">
                   </div>
-                  <div class="form-group col-lg-3 col-sm-12 col-md-12">
+                  <!-- <div class="form-group col-lg-3 col-sm-12 col-md-12">
                     <label class="">Layanan Portfolio</label>
                     <select name="layanan" class="form-control selectric">
                       <option value="<?= $portfolio->judul_layanan; ?>" selected><?= $portfolio->judul_layanan; ?></option>
@@ -64,7 +64,7 @@
                         <option value="<?= $values->judul_layanan; ?>"><?= $values->judul_layanan; ?></option>
                       <?php endforeach; ?>
                     </select>
-                  </div>
+                  </div> -->
                   <div class="form-group col-lg-3 col-sm-12 col-md-12">
                     <label class="">Website</label>
                     <input type="text" class="form-control" name="website" value="<?= $portfolio->website_portfolio ?>" placeholder="www.example.com">
