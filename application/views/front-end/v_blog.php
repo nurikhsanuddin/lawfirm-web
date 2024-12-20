@@ -147,7 +147,11 @@
 </main><!-- End #main -->
 
 <!-- Include pagination.js library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Then load pagination.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js"></script>
+
 <script>
   $(document).ready(function () {
     $('#pagination-container').pagination({
