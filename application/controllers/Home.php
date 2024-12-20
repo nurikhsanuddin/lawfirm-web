@@ -20,7 +20,7 @@ class Home extends CI_Controller
     $this->load->model('M_dashboard');
     require_once FCPATH . 'vendor/autoload.php';
   }
-  public function kirimPesan()
+  public function kirimemail()
   {
     header('Content-Type: application/json');
 
@@ -40,13 +40,15 @@ class Home extends CI_Controller
 
     $mail = new PHPMailer(true);
     try {
+      $this->load->config('mailconfig');
+
       $mail->isSMTP();
-      $mail->Host = 'mail.projectmaster.id';
+      $mail->Host = $this->config->item('smtp_host');
       $mail->SMTPAuth = true;
-      $mail->Username = 'mtp@projectmaster.id';
-      $mail->Password = 'passwordmtp123';
+      $mail->Username = $this->config->item('smtp_user');
+      $mail->Password = $this->config->item('smtp_pass');
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-      $mail->Port = 465;
+      $mail->Port = $this->config->item('smtp_port');
 
       // Get form data
       $senderName = htmlspecialchars($this->input->post('name'));
@@ -56,41 +58,41 @@ class Home extends CI_Controller
 
       // Email template for admin
       $adminMessageBody = "
-      <!DOCTYPE html>
-      <html>
-      <head>
-          <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-              .header { background: #003366; color: white; padding: 15px; text-align: center; border-radius: 5px 5px 0 0; }
-              .content { padding: 20px; }
-              .footer { background: #f5f5f5; padding: 15px; text-align: center; font-size: 12px; }
-          </style>
-      </head>
-      <body>
-          <div class='container'>
-              <div class='header'>
-                  <h2>Pesan Baru dari Form Kontak</h2>
-              </div>
-              <div class='content'>
-                  <p><strong>Nama:</strong> {$senderName}</p>
-                  <p><strong>Email:</strong> {$senderEmail}</p>
-                  <p><strong>Subjek:</strong> {$subject}</p>
-                  <p><strong>Pesan:</strong></p>
-                  <p>{$message}</p>
-              </div>
-              <div class='footer'>
-                  <p>Email ini dikirim dari form kontak di website Anda</p>
-              </div>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+          .header { background: #003366; color: white; padding: 15px; text-align: center; border-radius: 5px 5px 0 0; }
+          .content { padding: 20px; }
+          .footer { background: #f5f5f5; padding: 15px; text-align: center; font-size: 12px; }
+      </style>
+  </head>
+  <body>
+      <div class='container'>
+          <div class='header'>
+              <h2>Pesan Baru dari Form Kontak</h2>
           </div>
-      </body>
-      </html>";
+          <div class='content'>
+              <p><strong>Nama:</strong> {$senderName}</p>
+              <p><strong>Email:</strong> {$senderEmail}</p>
+              <p><strong>Subjek:</strong> {$subject}</p>
+              <p><strong>Pesan:</strong></p>
+              <p>{$message}</p>
+          </div>
+          <div class='footer'>
+              <p>Email ini dikirim dari form kontak di website Anda</p>
+          </div>
+      </div>
+  </body>
+  </html>";
 
       // Send to admin
       $mail->clearAddresses();
       $mail->setFrom($senderEmail, $senderName);
       // Add these lines:
-      $mail->addAddress('admin@projectmaster.id'); // Replace with actual admin email
+      $mail->addAddress('admin@mtplawfirm.com'); // Replace with actual admin email
       $mail->isHTML(true);
       $mail->Subject = 'Pesan Baru dari Form Kontak: ' . $subject;
       $mail->Body = $adminMessageBody;
@@ -102,45 +104,45 @@ class Home extends CI_Controller
 
       // Email template for sender
       $userMessageBody = "
-      <!DOCTYPE html>
-      <html>
-      <head>
-          <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-              .header { background: #003366; color: white; padding: 15px; text-align: center; border-radius: 5px 5px 0 0; }
-              .content { padding: 20px; }
-              .footer { background: #f5f5f5; padding: 15px; text-align: center; font-size: 12px; }
-              .contact-info { background: #e9ecef; padding: 15px; margin: 15px 0; border-radius: 5px; }
-              .whatsapp-button { display: inline-block; padding: 10px 20px; color: white; background-color: #25D366; border-radius: 5px; text-decoration: none; }
-          </style>
-      </head>
-      <body>
-          <div class='container'>
-              <div class='header'>
-                  <h2>Terima Kasih Telah Menghubungi MT&P Law Firm</h2>
-              </div>
-              <div class='content'>
-                  <p>Yth. {$senderName},</p>
-                  <p>Terima kasih telah menghubungi MT&P Law Firm. Kami telah menerima pesan Anda dan akan segera merespon pertanyaan Anda.</p>
-                  
-                  <div class='contact-info'>
-                      <p><strong>Butuh bantuan segera?</strong></p>
-                      <p>Silakan hubungi kami melalui WhatsApp dengan mengklik tombol di bawah ini:</p>
-                      <a href='https://wa.me/628122961011' class='whatsapp-button'>Hubungi via WhatsApp</a>
-                  </div>
-
-                  <p><strong>Detail pesan Anda:</strong></p>
-                  <p><strong>Subjek:</strong> {$subject}</p>
-                  <p><strong>Pesan:</strong></p>
-                  <p>{$message}</p>
-              </div>
-              <div class='footer'>
-                  <p>Salam hormat,<br>Tim MT&P Law Firm</p>
-              </div>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+          .header { background: #003366; color: white; padding: 15px; text-align: center; border-radius: 5px 5px 0 0; }
+          .content { padding: 20px; }
+          .footer { background: #f5f5f5; padding: 15px; text-align: center; font-size: 12px; }
+          .contact-info { background: #e9ecef; padding: 15px; margin: 15px 0; border-radius: 5px; }
+          .whatsapp-button { display: inline-block; padding: 10px 20px; color: white; background-color: #25D366; border-radius: 5px; text-decoration: none; }
+      </style>
+  </head>
+  <body>
+      <div class='container'>
+          <div class='header'>
+              <h2>Terima Kasih Telah Menghubungi MT&P Law Firm</h2>
           </div>
-      </body>
-      </html>";
+          <div class='content'>
+              <p>Yth. {$senderName},</p>
+              <p>Terima kasih telah menghubungi MT&P Law Firm. Kami telah menerima pesan Anda dan akan segera merespon pertanyaan Anda.</p>
+              
+              <div class='contact-info'>
+                  <p><strong>Butuh bantuan segera?</strong></p>
+                  <p>Silakan hubungi kami melalui WhatsApp dengan mengklik tombol di bawah ini:</p>
+                  <a href='https://wa.me/628122961011' class='whatsapp-button'>Hubungi via WhatsApp</a>
+              </div>
+
+              <p><strong>Detail pesan Anda:</strong></p>
+              <p><strong>Subjek:</strong> {$subject}</p>
+              <p><strong>Pesan:</strong></p>
+              <p>{$message}</p>
+          </div>
+          <div class='footer'>
+              <p>Salam hormat,<br>Tim MT&P Law Firm</p>
+          </div>
+      </div>
+  </body>
+  </html>";
 
       // Send to user
       $mail->clearAddresses();

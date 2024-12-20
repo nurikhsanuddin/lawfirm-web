@@ -25,7 +25,8 @@
           <div class="card entry entry-single">
 
             <div class="entry-img">
-              <img src="<?= base_url('assets/img/berita/') . $berita->gambar_berita; ?>" alt="" class="img-responsive center-block d-block mx-auto">
+              <img src="<?= base_url('assets/img/berita/') . $berita->gambar_berita; ?>" alt=""
+                class="img-responsive center-block d-block mx-auto">
             </div>
 
             <h2 class="entry-title">
@@ -34,9 +35,9 @@
 
             <div class="entry-meta">
               <ul>
-                <!-- <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><?= $berita->nama; ?></a></li> -->
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><?= date('d-M-Y H:i', strtotime($berita->date_cretated)); ?></a></li>
-                <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li> -->
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
+                  <a><?= date('d-M-Y H:i', strtotime($berita->date_cretated)); ?></a>
+                </li>
               </ul>
             </div>
 
@@ -58,9 +59,6 @@
 
           </div>
 
-         
-
-
         </div>
 
         <div class="col-lg-12">
@@ -78,43 +76,27 @@
             <h3 class="sidebar-title">Categories</h3>
             <div class="sidebar-item categories">
               <ul>
-                <?php foreach ($kategori as $key => $values) : ?>
+                <?php foreach ($kategori as $key => $values): ?>
                   <li><a href="#"><?= $values->nama_kategori; ?> <span>(25)</span></a></li>
                 <?php endforeach; ?>
               </ul>
             </div><!-- End sidebar categories-->
 
             <h3 class="sidebar-title">Recent Posts</h3>
-            <?php foreach ($lastst_berita as $key => $value) :
+            <?php foreach ($lastst_berita as $key => $value):
               // CEK KONDISI BERITA
-              if ($value->status_berita == "Publish") : ?>
+              if ($value->status_berita == "Publish"): ?>
                 <div class="sidebar-item recent-posts">
                   <div class="post-item clearfix">
                     <img src="<?= base_url('assets/img/berita/') . $value->gambar_berita; ?>" alt="">
-                    <h4><a href="<?= base_url('home/detail/' . $value->slug_berita); ?>"><?= $value->judul_berita; ?></a></h4>
+                    <h4><a href="<?= base_url('home/detail/' . $value->slug_berita); ?>"><?= $value->judul_berita; ?></a>
+                    </h4>
                     <time datetime="01-01-2020"><?= date('d-m-Y H:i', strtotime($value->date_cretated)); ?></time>
                   </div>
                 </div><!-- End sidebar recent posts-->
               <?php endif; ?>
             <?php endforeach; ?>
             <!-- End sidebar recent posts-->
-
-            <!-- <h3 class="sidebar-title">Tags</h3>
-            <div class="sidebar-item tags">
-              <ul>
-                <li><a href="#">App</a></li>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">Marketing</a></li>
-              </ul>
-            </div>End sidebar tags -->
 
           </div><!-- End sidebar -->
 

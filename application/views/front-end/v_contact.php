@@ -46,7 +46,7 @@
       // Collect form data
       const formData = new FormData(form);
 
-      fetch('<?= base_url('home/kirimPesan') ?>', {
+      fetch('<?= base_url('home/kirimemail') ?>', {
         method: 'POST',
         body: formData
       })
