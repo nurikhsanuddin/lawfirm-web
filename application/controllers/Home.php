@@ -193,6 +193,9 @@ class Home extends CI_Controller
   public function blog()
   {
 
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
     // LOAD FUNCTION DARI MODEL
     $berita = $this->M_berita->daftar();
     $lastst_berita = $this->M_berita->lastst_berita();

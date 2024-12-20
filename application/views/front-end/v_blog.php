@@ -147,25 +147,40 @@
 </main><!-- End #main -->
 
 <!-- Include pagination.js library -->
-
+<div id="blog-content">
+  <div id="loading" style="display:none">Loading...</div>
+  <div id="pagination-container"></div>
+  <div id="data-container"></div>
+</div>
 
 <script>
   $(document).ready(function () {
-    $('#pagination-container').pagination({
-      dataSource: <?= json_encode($published_berita); ?>,
-      pageSize: <?= $posts_per_page; ?>,
-      callback: function (data, pagination) {
-        var html = '';
-        $.each(data, function (index, item) {
-          html += '<div class="card mb-4 entry">';
-          html += '<div class="entry-img"><img src="<?= base_url('assets/img/berita/'); ?>' + item.gambar_berita + '" alt="" class="img-responsive center-block d-block mx-auto"></div>';
-          html += '<h2 class="entry-title"><a href="<?= base_url('home/detail/'); ?>' + item.slug_berita + '">' + item.judul_berita + '</a></h2>';
-          html += '<div class="entry-meta"><ul><li class="d-flex align-items-center"><i class="bi bi-clock"></i><a>' + new Date(item.date_cretated).toLocaleDateString() + '</a></li></ul></div>';
-          html += '<div class="entry-content"><p>' + item.isi_berita.substring(0, 200) + '...</p><div class="read-more"><a href="<?= base_url('home/detail/'); ?>' + item.slug_berita + '">Read More</a></div></div>';
-          html += '</div>';
-        });
-        $('.entries').html(html);
-      }
-    });
+    try {
+      $('#loading').show();
+
+      $('#pagination-container').pagination({
+        dataSource: <?= json_encode(isset($published_berita) ? $published_berita : []); ?>,
+        pageSize: <?= isset($posts_per_page) ? $posts_per_page : 10; ?>,
+        callback: function (data, pagination) {
+          var html = '';
+          $.each(data, function (index, item) {
+            html += `
+                        <div class="entry">
+                            <img src="<?= base_url('assets/img/berita/'); ?>${item.gambar_berita}" alt="">
+                            <h2><a href="<?= base_url('home/detail/'); ?>${item.slug_berita}">${item.judul_berita}</a></h2>
+                            <div class="meta">${item.date_created}</div>
+                            <p>${item.isi_berita.substring(0, 200)}...</p>
+                        </div>
+                    `;
+          });
+          $('#data-container').html(html);
+          $('#loading').hide();
+        }
+      });
+    } catch (error) {
+      console.error('Pagination error:', error);
+      $('#loading').hide();
+      $('#data-container').html('<div class="error">Error loading content</div>');
+    }
   });
 </script>

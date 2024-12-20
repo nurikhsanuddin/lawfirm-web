@@ -23,11 +23,10 @@
   <link href="<?= base_url() ?>vendor/front-end/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?= base_url() ?>vendor/front-end/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="<?= base_url() ?>vendor/front-end/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- Then load pagination.js -->
+  <!-- Pagination -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js"></script>
   <link href="<?= base_url() ?>vendor/front-end/assets/css/style.css" rel="stylesheet">
 </head>
