@@ -28,6 +28,10 @@ class M_client extends CI_Model
 
   public function tambah()
   {
+    // Initialize image variable
+    $gambarclient = './assets/img/client/default.png';
+
+    // Get form data
     $nama = $this->input->post('name', true);
     $jenis = $this->input->post('jenis');
     $website = $this->input->post('website', true);
@@ -35,38 +39,55 @@ class M_client extends CI_Model
     $no = $this->input->post('no', true);
     $status = $this->input->post('status', true);
     $alamat = $this->input->post('alamat', true);
-    // CEK GAMBAR JIKA ADA GAMBAR AKAN DIUPLOAD 
-    // id   // nama gambar
-    $uploadImage = $_FILES['image']['name'];
-    // var_dump($uploadImage);
-    // die;
-    if ($uploadImage) {
-      // CEK FILE
+
+    // Handle image upload
+    if (isset($_FILES['image']) && $_FILES['image']['name']) {
       $config['allowed_types'] = 'gif|jpg|png';
       $config['max_size'] = '5048';
       $config['upload_path'] = './assets/img/client/';
+
       $this->upload->initialize($config);
-      // UPLOAD FILE  
+
       if ($this->upload->do_upload('image')) {
         $gambarclient = $this->upload->data('file_name');
       } else {
-        echo $this->upload->display_errors();
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect('client');
+        return;
       }
     }
+
     $data = [
-      'jenis_client'  => $jenis,
-      'nama_client'   => htmlspecialchars($nama),
-      'email_client'  => htmlspecialchars($email),
-      'website'       => $website,
-      'alamat'        => $alamat,
-      'no_telepon'    => $no,
+      'jenis_client' => $jenis,
+      'nama_client' => htmlspecialchars($nama),
+      'email_client' => htmlspecialchars($email),
+      'website' => $website,
+      'alamat' => $alamat,
+      'no_telepon' => $no,
       'gambar_client' => $gambarclient,
-      'publish'       => $status,
+      'publish' => $status,
+      'last_modified' => date('Y-m-d')
     ];
 
-    // QUERRY INSERT DATA
-    $this->db->insert('tb_client', $data);
-    $this->session->set_flashdata('success', 'Berhasil Membuat Berita');
+    try {
+      // Check if table exists
+      if (!$this->db->table_exists('tb_client')) {
+        throw new Exception('Table tb_client does not exist');
+      }
+
+      // Insert data
+      $insert = $this->db->insert('tb_client', $data);
+
+      if ($insert) {
+        $this->session->set_flashdata('success', 'Berhasil Menambahkan Data');
+      } else {
+        $this->session->set_flashdata('error', 'Gagal menambahkan data');
+      }
+
+    } catch (Exception $e) {
+      $this->session->set_flashdata('error', $e->getMessage());
+    }
+
     redirect('client');
   }
 
