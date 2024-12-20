@@ -26,70 +26,70 @@ class M_client extends CI_Model
     return $this->db->get()->row();
   }
 
-  public function tambah()
-  {
-    // Initialize image variable
-    $gambarclient = './assets/img/client/default.png';
+  // public function tambah()
+  // {
+  //   // Initialize image variable
+  //   $gambarclient = './assets/img/client/default.png';
 
-    // Get form data
-    $nama = $this->input->post('name', true);
-    $jenis = $this->input->post('jenis');
-    $website = $this->input->post('website', true);
-    $email = $this->input->post('email', true);
-    $no = $this->input->post('no', true);
-    $status = $this->input->post('status', true);
-    $alamat = $this->input->post('alamat', true);
+  //   // Get form data
+  //   $nama = $this->input->post('name', true);
+  //   $jenis = $this->input->post('jenis');
+  //   $website = $this->input->post('website', true);
+  //   $email = $this->input->post('email', true);
+  //   $no = $this->input->post('no', true);
+  //   $status = $this->input->post('status', true);
+  //   $alamat = $this->input->post('alamat', true);
 
-    // Handle image upload
-    if (isset($_FILES['image']) && $_FILES['image']['name']) {
-      $config['allowed_types'] = 'gif|jpg|png';
-      $config['max_size'] = '5048';
-      $config['upload_path'] = './assets/img/client/';
+  //   // Handle image upload
+  //   if (isset($_FILES['image']) && $_FILES['image']['name']) {
+  //     $config['allowed_types'] = 'gif|jpg|png';
+  //     $config['max_size'] = '5048';
+  //     $config['upload_path'] = './assets/img/client/';
 
-      $this->upload->initialize($config);
+  //     $this->upload->initialize($config);
 
-      if ($this->upload->do_upload('image')) {
-        $gambarclient = $this->upload->data('file_name');
-      } else {
-        $this->session->set_flashdata('error', $this->upload->display_errors());
-        redirect('client');
-        return;
-      }
-    }
+  //     if ($this->upload->do_upload('image')) {
+  //       $gambarclient = $this->upload->data('file_name');
+  //     } else {
+  //       $this->session->set_flashdata('error', $this->upload->display_errors());
+  //       redirect('client');
+  //       return;
+  //     }
+  //   }
 
-    $data = [
-      'jenis_client' => $jenis,
-      'nama_client' => htmlspecialchars($nama),
-      'email_client' => htmlspecialchars($email),
-      'website' => $website,
-      'alamat' => $alamat,
-      'no_telepon' => $no,
-      'gambar_client' => $gambarclient,
-      'publish' => $status,
-      'last_modified' => date('Y-m-d')
-    ];
+  //   $data = [
+  //     'jenis_client' => $jenis,
+  //     'nama_client' => htmlspecialchars($nama),
+  //     'email_client' => htmlspecialchars($email),
+  //     'website' => $website,
+  //     'alamat' => $alamat,
+  //     'no_telepon' => $no,
+  //     'gambar_client' => $gambarclient,
+  //     'publish' => $status,
+  //     'last_modified' => date('Y-m-d')
+  //   ];
 
-    try {
-      // Check if table exists
-      if (!$this->db->table_exists('tb_client')) {
-        throw new Exception('Table tb_client does not exist');
-      }
+  //   try {
+  //     // Check if table exists
+  //     if (!$this->db->table_exists('tb_client')) {
+  //       throw new Exception('Table tb_client does not exist');
+  //     }
 
-      // Insert data
-      $insert = $this->db->insert('tb_client', $data);
+  //     // Insert data
+  //     $insert = $this->db->insert('tb_client', $data);
 
-      if ($insert) {
-        $this->session->set_flashdata('success', 'Berhasil Menambahkan Data');
-      } else {
-        $this->session->set_flashdata('error', 'Gagal menambahkan data');
-      }
+  //     if ($insert) {
+  //       $this->session->set_flashdata('success', 'Berhasil Menambahkan Data');
+  //     } else {
+  //       $this->session->set_flashdata('error', 'Gagal menambahkan data');
+  //     }
 
-    } catch (Exception $e) {
-      $this->session->set_flashdata('error', $e->getMessage());
-    }
+  //   } catch (Exception $e) {
+  //     $this->session->set_flashdata('error', $e->getMessage());
+  //   }
 
-    redirect('client');
-  }
+  //   redirect('client');
+  // }
 
   public function edit($data)
   {
