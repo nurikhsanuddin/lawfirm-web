@@ -25,51 +25,51 @@ class client extends CI_Controller
     $setting = $this->M_setting->daftar();
     $title = $setting->nama_perusahaan;
     $image = $setting->image;
-    $client  = $this->M_client->daftar();
+    $client = $this->M_client->daftar();
 
     // MENGAMBIL DATA SESSION
     $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
     $data = array(
-      'title'     => $title,
-      'subtitle'  => 'Daftar client',
-      'isi'       => 'back_end/client/v_daftar',
-      'user'      =>  $user,
-      'client'    => $client,
-      'image'     => $image,
+      'title' => $title,
+      'subtitle' => 'Daftar client',
+      'isi' => 'back_end/client/v_daftar',
+      'user' => $user,
+      'client' => $client,
+      'image' => $image,
     );
 
     $this->load->view('back_end/layout/v_wrapper', $data, false);
   }
 
-  public function tambahclient()
-  {
-    addclient_validation();
-    if ($this->form_validation->run() ==  false) {
-      // LOAD FUNCTION DARI MODEL
-      $setting = $this->M_setting->daftar();
-      $title = $setting->nama_perusahaan;
-      $image = $setting->image;
-      $kategori  = $this->M_kategori->daftarKategoriclient();
+  // public function tambahclient()
+  // {
+  //   addclient_validation();
+  //   if ($this->form_validation->run() ==  false) {
+  //     // LOAD FUNCTION DARI MODEL
+  //     $setting = $this->M_setting->daftar();
+  //     $title = $setting->nama_perusahaan;
+  //     $image = $setting->image;
+  //     $kategori  = $this->M_kategori->daftarKategoriclient();
 
-      // MENGAMBIL DATA SESSION
-      $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+  //     // MENGAMBIL DATA SESSION
+  //     $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
-      $data = array(
-        'title'     => $title,
-        'subtitle'  => 'Tambah client',
-        'isi'       => 'back_end/client/v_tambah',
-        'user'      =>  $user,
-        'kategori'  =>  $kategori,
-        'image'     => $image,
+  //     $data = array(
+  //       'title'     => $title,
+  //       'subtitle'  => 'Tambah client',
+  //       'isi'       => 'back_end/client/v_tambah',
+  //       'user'      =>  $user,
+  //       'kategori'  =>  $kategori,
+  //       'image'     => $image,
 
-      );
+  //     );
 
-      $this->load->view('back_end/layout/v_wrapper', $data, false);
-    } else {
-      $this->M_client->tambah();
-    }
-  }
+  //     $this->load->view('back_end/layout/v_wrapper', $data, false);
+  //   } else {
+  //     $this->M_client->tambah();
+  //   }
+  // }
 
   public function edit($id_client)
   {
@@ -77,8 +77,8 @@ class client extends CI_Controller
     $setting = $this->M_setting->daftar();
     $title = $setting->nama_perusahaan;
     $image = $setting->image;
-    $kategori   = $this->M_kategori->daftarKategoriclient();
-    $client   = $this->M_client->detail($id_client);
+    $kategori = $this->M_kategori->daftarKategoriclient();
+    $client = $this->M_client->detail($id_client);
 
     // MENGAMBIL DATA SESSION
     $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
@@ -92,22 +92,22 @@ class client extends CI_Controller
       if (!empty($_FILES['image']['name'])) {
         // JIKA GAMBAR DIGANTI
 
-        $config['upload_path']   = './assets/img/client/';
+        $config['upload_path'] = './assets/img/client/';
         $config['allowed_types'] = 'gif|jpg|png|svg|jpeg';
-        $config['max_size']      = '5000'; // KB  
+        $config['max_size'] = '5000'; // KB  
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('image')) {
           // End validasi
           $data = array(
-            'title'     => $title,
-            'subtitle'  => 'Edit client',
-            'kategori'  => $kategori,
-            'client'    => $client,
-            'error'     => $this->upload->display_errors(),
-            'isi'       => 'back_end/client/v_edit',
-            'user'      => $user,
-            'image'     => $image,
+            'title' => $title,
+            'subtitle' => 'Edit client',
+            'kategori' => $kategori,
+            'client' => $client,
+            'error' => $this->upload->display_errors(),
+            'isi' => 'back_end/client/v_edit',
+            'user' => $user,
+            'image' => $image,
           );
           $this->load->view('back_end/layout/v_wrapper', $data, FALSE);
           // Masuk database
@@ -120,15 +120,15 @@ class client extends CI_Controller
           // End hapus
 
           $data = array(
-            'id_client'     => $id_client,
-            'jenis_client'  => $this->input->post('jenis'),
-            'nama_client'   => $this->input->post('name'),
-            'email_client'  => $this->input->post('email'),
-            'alamat'        => $this->input->post('alamat'),
-            'no_telepon'    => $this->input->post('no'),
-            'website'       => $this->input->post('website'),
+            'id_client' => $id_client,
+            'jenis_client' => $this->input->post('jenis'),
+            'nama_client' => $this->input->post('name'),
+            'email_client' => $this->input->post('email'),
+            'alamat' => $this->input->post('alamat'),
+            'no_telepon' => $this->input->post('no'),
+            'website' => $this->input->post('website'),
             'gambar_client' => $upload_data['uploads']['file_name'],
-            'publish'       => $this->input->post('status'),
+            'publish' => $this->input->post('status'),
             'last_modified' => date('Y-m-d'),
           );
 
@@ -139,14 +139,14 @@ class client extends CI_Controller
       } else {
         // JIKA GAMBAR TIDAK DIGANTI
         $data = array(
-          'id_client'     => $id_client,
-          'jenis_client'  => $this->input->post('jenis'),
-          'nama_client'   => $this->input->post('name'),
-          'email_client'  => $this->input->post('email'),
-          'alamat'        => $this->input->post('alamat'),
-          'no_telepon'    => $this->input->post('no'),
-          'website'       => $this->input->post('website'),
-          'publish'       => $this->input->post('status'),
+          'id_client' => $id_client,
+          'jenis_client' => $this->input->post('jenis'),
+          'nama_client' => $this->input->post('name'),
+          'email_client' => $this->input->post('email'),
+          'alamat' => $this->input->post('alamat'),
+          'no_telepon' => $this->input->post('no'),
+          'website' => $this->input->post('website'),
+          'publish' => $this->input->post('status'),
           'last_modified' => date('Y-m-d'),
         );
         // var_dump($data);
@@ -159,13 +159,13 @@ class client extends CI_Controller
     // End masuk database
 
     $data = array(
-      'title'     => $title,
-      'subtitle'  => 'Edit client',
-      'kategori'  => $kategori,
-      'client'    => $client,
-      'isi'       => 'back_end/client/v_edit',
-      'user'      => $user,
-      'image'     =>  $image,
+      'title' => $title,
+      'subtitle' => 'Edit client',
+      'kategori' => $kategori,
+      'client' => $client,
+      'isi' => 'back_end/client/v_edit',
+      'user' => $user,
+      'image' => $image,
     );
     $this->load->view('back_end/layout/v_wrapper', $data, FALSE);
   }
