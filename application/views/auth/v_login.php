@@ -54,7 +54,7 @@ $pesan = 'Selamat ' . $salam;
           <div class="p-4 m-3">
             <img src="<?= base_url('assets/img/company/') . $image; ?>" alt="logo" width="80"
               class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Company Profile</span>
+            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">MT&P - Lawfirm</span>
             </h4>
             <p class="text-muted">Sebelum Anda memulai, Anda harus masuk atau mendaftar jika Anda belum memiliki akun.
             </p>
