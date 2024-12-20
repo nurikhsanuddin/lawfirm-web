@@ -42,34 +42,70 @@ class client extends CI_Controller
     $this->load->view('back_end/layout/v_wrapper', $data, false);
   }
 
-  // public function tambahclient()
-  // {
-  //   addclient_validation();
-  //   if ($this->form_validation->run() ==  false) {
-  //     // LOAD FUNCTION DARI MODEL
-  //     $setting = $this->M_setting->daftar();
-  //     $title = $setting->nama_perusahaan;
-  //     $image = $setting->image;
-  //     $kategori  = $this->M_kategori->daftarKategoriclient();
+  public function tambahclient()
+  {
+    addclient_validation();
+    if ($this->form_validation->run() == false) {
+      // Load initial view with form
+      $data = array(
+        'title' => $this->M_setting->daftar()->nama_perusahaan,
+        'subtitle' => 'Tambah client',
+        'isi' => 'back_end/client/v_tambah',
+        'user' => $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array(),
+        'kategori' => $this->M_kategori->daftarKategoriclient(),
+        'image' => $this->M_setting->daftar()->image,
+      );
+      $this->load->view('back_end/layout/v_wrapper', $data, false);
+    } else {
+      // Process form submission
+      $gambarclient = 'default.png';
 
-  //     // MENGAMBIL DATA SESSION
-  //     $user = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+      // Handle image upload
+      if (!empty($_FILES['image']['name'])) {
+        $config['upload_path'] = './assets/img/client/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '5048';
 
-  //     $data = array(
-  //       'title'     => $title,
-  //       'subtitle'  => 'Tambah client',
-  //       'isi'       => 'back_end/client/v_tambah',
-  //       'user'      =>  $user,
-  //       'kategori'  =>  $kategori,
-  //       'image'     => $image,
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
 
-  //     );
+        if ($this->upload->do_upload('image')) {
+          $gambarclient = $this->upload->data('file_name');
+        } else {
+          $this->session->set_flashdata('error', $this->upload->display_errors());
+          redirect('client/tambahclient');
+          return;
+        }
+      }
 
-  //     $this->load->view('back_end/layout/v_wrapper', $data, false);
-  //   } else {
-  //     $this->M_client->tambah();
-  //   }
-  // }
+      // Prepare data
+      $data = [
+        'jenis_client' => $this->input->post('jenis'),
+        'nama_client' => htmlspecialchars($this->input->post('name')),
+        'email_client' => htmlspecialchars($this->input->post('email')),
+        'website' => $this->input->post('website'),
+        'alamat' => $this->input->post('alamat'),
+        'no_telepon' => $this->input->post('no'),
+        'gambar_client' => $gambarclient,
+        'publish' => $this->input->post('status'),
+        'last_modified' => date('Y-m-d')
+      ];
+
+      // Direct database insert
+      try {
+        $this->db->insert('tb_client', $data);
+        if ($this->db->affected_rows() > 0) {
+          $this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+        } else {
+          $this->session->set_flashdata('error', 'Gagal menambahkan data');
+        }
+      } catch (Exception $e) {
+        $this->session->set_flashdata('error', 'Database error: ' . $e->getMessage());
+      }
+
+      redirect('client');
+    }
+  }
 
   public function edit($id_client)
   {
