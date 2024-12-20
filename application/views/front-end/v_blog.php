@@ -19,22 +19,7 @@
       <div class="row">
 
         <div class="col-lg-8 entries">
-          <?php
-          // Filter published berita
-          $published_berita = array_filter($berita, function ($value) {
-            return $value->status_berita == "Publish";
-          });
-
-          // Define total pages and current page
-          $posts_per_page = 5;
-          $total_pages = ceil(count($published_berita) / $posts_per_page);
-          $current_page = $this->uri->segment(3) ? $this->uri->segment(3) : 1;
-
-          // Get the current page's berita
-          $start_index = ($current_page - 1) * $posts_per_page;
-          $current_page_berita = array_slice($published_berita, $start_index, $posts_per_page);
-          ?>
-          <?php foreach ($current_page_berita as $key => $value):
+          <?php foreach ($berita as $key => $value):
             // strip tags to avoid breaking any html
             $isi = strip_tags($value->isi_berita);
             if (strlen($isi) > 200) {
@@ -46,39 +31,45 @@
               //if the isi doesn't contain any space then it will cut without word basis.
               $isi = $endPoint ? substr($isiCut, 0, $endPoint) : substr($isiCut, 0);
             }
-            ?>
-            <div class="card mb-4 entry">
-              <div class="entry-img">
-                <img src="<?= base_url('assets/img/berita/') . $value->gambar_berita; ?>" alt=""
-                  class="img-responsive center-block d-block mx-auto">
-              </div>
+            if ($value->status_berita == "Publish"): ?>
+              <div class="card mb-4 entry">
+                <div class="entry-img">
+                  <img src="<?= base_url('assets/img/berita/') . $value->gambar_berita; ?>" alt=""
+                    class="img-responsive center-block d-block mx-auto">
+                </div>
 
-              <h2 class="entry-title">
-                <a href="<?= base_url('home/detail/' . $value->slug_berita); ?>"><?= $value->judul_berita; ?></a>
-              </h2>
-              <div class="entry-meta">
-                <ul>
-                  <!-- <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><?= $value->nama; ?></a></li> -->
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
-                    <a><?= date('d-M-Y H:i', strtotime($value->date_cretated)); ?></a>
-                  </li>
-                  <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li> -->
-                </ul>
-              </div>
-              <div class="entry-content">
-                <p>
-                  <?= $isi; ?>
-                </p>
-                <div class="read-more">
-                  <a href="<?= base_url('home/detail/' . $value->slug_berita); ?>">Read More</a>
+                <h2 class="entry-title">
+                  <a href="<?= base_url('home/detail/' . $value->slug_berita); ?>"><?= $value->judul_berita; ?></a>
+                </h2>
+                <div class="entry-meta">
+                  <ul>
+                    <!-- <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><?= $value->nama; ?></a></li> -->
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
+                      <a><?= date('d-M-Y H:i', strtotime($value->date_cretated)); ?></a>
+                    </li>
+                    <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>12 Comments</a></li> -->
+                  </ul>
+                </div>
+                <div class="entry-content">
+                  <p>
+                    <?= $isi; ?>
+                  </p>
+                  <div class="read-more">
+                    <a href="<?= base_url('home/detail/' . $value->slug_berita); ?>">Read More</a>
+                  </div>
                 </div>
               </div>
-            </div>
+
+            <?php endif; ?>
           <?php endforeach; ?>
 
-          <div class="blog-pagination">
-            <ul class="justify-content-center" id="pagination-container"></ul>
-          </div>
+          <!-- <div class="blog-pagination">
+            <ul class="justify-content-center">
+              <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+            </ul>
+          </div> -->
 
         </div><!-- End blog entries list -->
 
@@ -118,7 +109,7 @@
                 </div><!-- End sidebar recent posts-->
               <?php endif; ?>
             <?php endforeach; ?>
-            <h3 class="sidebar-title">Tags</h3>
+            <!-- <h3 class="sidebar-title">Tags</h3>
             <div class="sidebar-item tags">
               <ul>
                 <li><a href="#">App</a></li>
@@ -133,7 +124,7 @@
                 <li><a href="#">Tips</a></li>
                 <li><a href="#">Marketing</a></li>
               </ul>
-            </div><!-- End sidebar tags-->
+            </div> -->
 
           </div><!-- End sidebar -->
 
@@ -145,42 +136,3 @@
   </section><!-- End Blog Section -->
 
 </main><!-- End #main -->
-
-<!-- Include pagination.js library -->
-<div id="blog-content">
-  <div id="loading" style="display:none">Loading...</div>
-  <div id="pagination-container"></div>
-  <div id="data-container"></div>
-</div>
-
-<script>
-  $(document).ready(function () {
-    try {
-      $('#loading').show();
-
-      $('#pagination-container').pagination({
-        dataSource: <?= json_encode(isset($published_berita) ? $published_berita : []); ?>,
-        pageSize: <?= isset($posts_per_page) ? $posts_per_page : 10; ?>,
-        callback: function (data, pagination) {
-          var html = '';
-          $.each(data, function (index, item) {
-            html += `
-                        <div class="entry">
-                            <img src="<?= base_url('assets/img/berita/'); ?>${item.gambar_berita}" alt="">
-                            <h2><a href="<?= base_url('home/detail/'); ?>${item.slug_berita}">${item.judul_berita}</a></h2>
-                            <div class="meta">${item.date_created}</div>
-                            <p>${item.isi_berita.substring(0, 200)}...</p>
-                        </div>
-                    `;
-          });
-          $('#data-container').html(html);
-          $('#loading').hide();
-        }
-      });
-    } catch (error) {
-      console.error('Pagination error:', error);
-      $('#loading').hide();
-      $('#data-container').html('<div class="error">Error loading content</div>');
-    }
-  });
-</script>
