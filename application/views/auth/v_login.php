@@ -35,7 +35,8 @@ $pesan = 'Selamat ' . $salam;
   <link rel="stylesheet" href="<?= base_url() ?>vendor/back-end/assets/css/bootstrap.min.css">
   <script src="<?= base_url(); ?>vendor/back-end/assets/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="<?= base_url() ?>vendor/back-end/assets/fonts/fontawesome/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>vendor/back-end/assets/fonts/iconic/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="<?= base_url() ?>vendor/back-end/assets/fonts/iconic/css/material-design-iconic-font.min.css">
   <!-- CSS Libraries -->
   <!-- Template CSS -->
   <link rel="shortcut icon" href="<?= base_url('assets/img/company/') . $image; ?>" type="image/x-icon">
@@ -51,16 +52,20 @@ $pesan = 'Selamat ' . $salam;
       <div class="d-flex flex-wrap align-items-stretch">
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
-            <img src="<?= base_url('assets/img/company/') . $image; ?>" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Company Profile</span></h4>
-            <p class="text-muted">Sebelum Anda memulai, Anda harus masuk atau mendaftar jika Anda belum memiliki akun.</p>
+            <img src="<?= base_url('assets/img/company/') . $image; ?>" alt="logo" width="80"
+              class="shadow-light rounded-circle mb-5 mt-2">
+            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Company Profile</span>
+            </h4>
+            <p class="text-muted">Sebelum Anda memulai, Anda harus masuk atau mendaftar jika Anda belum memiliki akun.
+            </p>
 
             <?= $this->session->flashdata('message'); ?>
 
             <form method="POST" action="<?= base_url('auth'); ?>">
               <div class="form-group">
                 <label for="username">Email</label>
-                <input id="email" type="text" class="form-control" name="email" tabindex="1" autofocus value="<?= set_value('email'); ?>">
+                <input id="email" type="text" class="form-control" name="email" tabindex="1" autofocus
+                  value="<?= set_value('email'); ?>">
                 <small class="text-danger "><?= form_error('email') ?></small>
               </div>
               <div class="form-group">
@@ -102,12 +107,14 @@ $pesan = 'Selamat ' . $salam;
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url() ?>vendor/back-end/assets/img/unsplash/login-bg.jpg">
+        <div
+          class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
+          data-background="<?= base_url() ?>vendor/back-end/assets/img/unsplash/login-bg.jpg">
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
                 <h1 class="mb-2 display-4 font-weight-bold"><?= $pesan; ?></h1>
-                <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
+                <h5 class="font-weight-normal text-muted-transparent">Surakarta, Indonesia</h5>
               </div>
 
             </div>
@@ -132,28 +139,28 @@ $pesan = 'Selamat ' . $salam;
   <!-- Page Specific JS File -->
   <!-- toast flashdata -->
   <script src="<?= base_url(); ?>vendor/back-end/assets/plugins/toastr/toastr.min.js" type="text/javascript"></script>
-  <?php if ($this->session->flashdata('success')) : ?>
+  <?php if ($this->session->flashdata('success')): ?>
     <div class="success-message"><?= $this->session->flashdata('success') ?></div>
     <script type="text/javascript">
       toastr.success($(".success-message"))
     </script>
   <?php endif; ?>
 
-  <?php if ($this->session->flashdata('info')) : ?>
+  <?php if ($this->session->flashdata('info')): ?>
     <div class="info-message"><?= $this->session->flashdata('info') ?></div>
     <script type="text/javascript">
       toastr.info($(".info-message"))
     </script>
   <?php endif; ?>
 
-  <?php if ($this->session->flashdata('warning')) : ?>
+  <?php if ($this->session->flashdata('warning')): ?>
     <div class="warning-message"><?= $this->session->flashdata('warning') ?></div>
     <script type="text/javascript">
       toastr.warning($(".warning-message"))
     </script>
   <?php endif; ?>
 
-  <?php if ($this->session->flashdata('error')) : ?>
+  <?php if ($this->session->flashdata('error')): ?>
     <div class="error-message"><?= $this->session->flashdata('error') ?></div>
     <script type="text/javascript">
       toastr.error($(".error-message"))
