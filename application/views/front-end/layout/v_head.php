@@ -12,7 +12,9 @@
   <link href="<?= base_url() ?>vendor/front-end/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="<?= base_url() ?>vendor/front-end/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +25,10 @@
   <link href="<?= base_url() ?>vendor/front-end/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Then load pagination.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js"></script>
   <link href="<?= base_url() ?>vendor/front-end/assets/css/style.css" rel="stylesheet">
 </head>
 
