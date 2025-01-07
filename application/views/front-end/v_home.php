@@ -385,14 +385,14 @@
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
               <li>
-                <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Visi</a>
+                <a class="nav-link active" data-bs-toggle="pill" href="#tab3">Sejarah</a>
               </li>
               <li>
+                <a class="nav-link " data-bs-toggle="pill" href="#tab1">Motto</a>
+              </li>
+              <!-- <li>
                 <a class="nav-link" data-bs-toggle="pill" href="#tab2">Misi</a>
-              </li>
-              <li>
-                <a class="nav-link" data-bs-toggle="pill" href="#tab3">Sejarah</a>
-              </li>
+              </li> -->
             </ul><!-- End Tabs -->
 
             <!-- Tab Content -->
