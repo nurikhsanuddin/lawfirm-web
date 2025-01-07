@@ -920,7 +920,7 @@
               </div>
               <div class="col-md-6">
                 <div class="info-box">
-                  <i class="bi bi-envelope"></i>
+                  <i class="bi bi-instagram"></i>
                   <h3>Instagram</h3>
                   <p>mtplawfirm</p>
                 </div>

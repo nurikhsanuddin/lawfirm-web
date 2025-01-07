@@ -47,7 +47,7 @@
         <div class="col-lg-3 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <?php foreach ($layanan as $key => $value) : ?>
+            <?php foreach ($layanan as $key => $value): ?>
               <li><i class="bi bi-chevron-right"></i> <a href="#"><?= $value->judul_layanan; ?></a></li>
             <?php endforeach; ?>
           </ul>
@@ -68,13 +68,14 @@
 
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong><span><?= date('Y'); ?></span></strong>. APINDORAYA All Rights Reserved
+      &copy; Copyright <strong><span><?= date('Y'); ?></span></strong>. MTPLAWFIRM.COM All Rights Reserved
     </div>
   </div>
   </div>
 </footer><!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="<?= base_url(); ?>vendor/front-end/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
