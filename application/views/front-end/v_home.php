@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link href="<?= base_url() ?>vendor/front-end/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <!-- ...existing code... -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
