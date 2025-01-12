@@ -597,8 +597,13 @@
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
               <div class="d-flex align-items-center mb-3">
-                <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3">
-                  <i class="bi bi-people text-primary fs-4"></i>
+                <div class="icon-box bg-primary-subtle rounded-circle p-3 me-3" style="width: 70px; height: 70px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="fill: #0d6efd;"
+                    viewBox=" 0 0 640
+                    512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                      d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L550.2 352l41.8 0c26.5 0 48-21.5 48-48l0-128c0-26.5-21.5-48-48-48l-76 0-4 0-.7 0-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48-80 0c-26.5 0-48 21.5-48 48L0 304c0 26.5 21.5 48 48 48l108.2 0 91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123z" />
+                  </svg>
                 </div>
                 <h3 class="h5 mb-0 fw-bold">ALTERNATIF PENYELESAIAN SENGKETA (ADR)</h3>
               </div>
@@ -606,6 +611,7 @@
                 arbitrase.</p>
             </div>
           </div>
+
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-card h-100 p-4 bg-white rounded-4 shadow-sm hover-shadow transition">
               <div class="d-flex align-items-center mb-3">
@@ -929,7 +935,7 @@
                 <div class="info-box">
                   <i class="bi bi-clock"></i>
                   <h3>Open Hours</h3>
-                  <p>Senin - Sabtu<br>09:00 - 16:00</p>
+                  <p>Monday - Friday<br>09:00 - 16:00</p>
                 </div>
               </div>
             </div>
@@ -950,7 +956,7 @@
     </section><!-- End Contact Section -->
 
     <!-- Tombol WhatsApp -->
-    <a href="https://api.whatsapp.com/send?phone=628122961011" class="whatsapp-button" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=6281326218700 " class="whatsapp-button" target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 258">
         <defs>
           <linearGradient id="logosWhatsappIcon0" x1="50%" x2="50%" y1="100%" y2="0%">
